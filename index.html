@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="jquery.v3.5.1.js"></script>
-  <script src="client.js"></script>
-  <link rel="stylesheet" href="bootstrap.css">
-  <link rel="stylesheet" href="style.css">
-  <title>Week 7 Salary Calculator</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery.v3.5.1.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Week 7 Salary Calculator</title>
+  </head>
+  <body class="container">
+    <header>
+      <h1>Salary Calculator</h1>
+      <p>Add Employee:</p>
+      <input type="text" id="firstName" placeholder="First Name" />
+      <input type="text" id="LastName" placeholder="Last Name" />
+      <input type="number" id="idNumber" placeholder="ID Number" />
+      <input type="text" id="jobTitle" placeholder="Job Title" />
+      <input type="number" id="annualSalary" placeholder="Annual Salary" />
+      <button type="button" id="submit" class="btn btn-dark">Submit</button>
+    </header>
+    <main>
+      <p>Employees:</p>
+      <table class="table table-bordered">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">ID Number</th>
+          <th scope="col">Job Title</th>
+          <th scope="col">Annual Salary</th>
+          <th></th>
+        </tr>
+        <tr id="employeeEntry"></tr>
+      </table>
+    </main>
+  </body>
 </html>
