@@ -7,7 +7,8 @@ let employees = [];
 function readyNow() {
   console.log("JQ");
   $("#submit").on("click", addToEmployees);
-  $("#delete").on("click", '.employeeRow', deleteEmployee);
+  $("#tableMain").on("click", deleteEmployee);
+
   renderToDom();
 }
 
@@ -19,15 +20,23 @@ function addToEmployees() {
   newEmployee.jobTitle = $("#jobTitle").val();
   newEmployee.annualSalary = Number($("#annualSalary").val());
 
-  employees.push(newEmployee);
-  console.log("Added to employees:", newEmployee);
-
-  $("#firstName").val("");
-  $("#lastName").val("");
-  $("#idNumber").val("");
-  $("#jobTitle").val("");
-  $("#annualSalary").val("");
-
+  if (
+    !newEmployee.firstName ||
+    !newEmployee.lastName ||
+    !newEmployee.idNumber ||
+    !newEmployee.jobTitle ||
+    !newEmployee.annualSalary
+  ) {
+    console.log("Information missing!");
+  } else {
+    employees.push(newEmployee);
+    console.log("Added to employees:", newEmployee);
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#idNumber").val("");
+    $("#jobTitle").val("");
+    $("#annualSalary").val("");
+  }
   renderToDom();
 }
 
@@ -50,7 +59,7 @@ function renderToDom() {
       <td>${person.lastName}</td>
       <td>${person.idNumber}</td>
       <td>${person.jobTitle}</td>
-      <td>${person.annualSalary}</td>
+      <td>$ ${accounting.formatNumber(person.annualSalary)}</td>
       <td><button type="button" id="delete" class="btn btn-dark">Delete</button></td>
     </tr>
     `);
@@ -67,11 +76,15 @@ function calculateMonthlyLabor() {
   monthlyLaborTotal = monthlyLaborTotal / 12;
 
   $("#monthlyLabor").text(
-    `Monthly Labor Total: ${Math.round(monthlyLaborTotal)}`
+    `Monthly Labor Total: $ ${accounting.formatNumber(Math.round(
+      monthlyLaborTotal
+    ))}`
   );
 }
 
-function deleteEmployee() {
-  let clickedThing = $(this).text();
-  console.log("you clicked on", clickedThing);
-}
+ function deleteEmployee() {
+   let clickedThing = $('#delete').text();
+   console.log("you clicked on", clickedThing);
+   $('#delete').closest("tr").remove();
+
+ }
