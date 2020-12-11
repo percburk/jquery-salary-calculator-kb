@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="jquery.v3.5.1.js"></script>
+    <script src="accounting.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="style.css" />
@@ -14,7 +15,7 @@
       <h1>Salary Calculator</h1>
       <p>Add Employee:</p>
       <input type="text" id="firstName" placeholder="First Name" />
-      <input type="text" id="LastName" placeholder="Last Name" />
+      <input type="text" id="lastName" placeholder="Last Name" />
       <input type="number" id="idNumber" placeholder="ID Number" />
       <input type="text" id="jobTitle" placeholder="Job Title" />
       <input type="number" id="annualSalary" placeholder="Annual Salary" />
@@ -22,17 +23,9 @@
     </header>
     <main>
       <p>Employees:</p>
-      <table class="table table-bordered">
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">ID Number</th>
-          <th scope="col">Job Title</th>
-          <th scope="col">Annual Salary</th>
-          <th></th>
-        </tr>
-        <tr id="employeeEntry"></tr>
+      <table id="employeeEntry" class="table table-bordered">
       </table>
+      <p id="monthlyLabor"></p>
     </main>
   </body>
 </html>
