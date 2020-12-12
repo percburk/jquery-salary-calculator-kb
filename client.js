@@ -7,7 +7,7 @@ let employees = [];
 function readyNow() {
   console.log("JQ");
   $("#submit").on("click", addToEmployees);
-  $("#tableMain").on("click", deleteEmployee);
+  $("#tableMain").on("click", "td", deleteEmployee);
 
   renderToDom();
 }
@@ -52,14 +52,14 @@ function renderToDom() {
       <th></th>
     </tr>
   `);
-  for (person of employees) {
+  for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr class="employeeRow">
-      <td>${person.firstName}</td>
-      <td>${person.lastName}</td>
-      <td>${person.idNumber}</td>
-      <td>${person.jobTitle}</td>
-      <td>$ ${accounting.formatNumber(person.annualSalary)}</td>
+    <tr id="${i}">
+      <td>${employees[i].firstName}</td>
+      <td>${employees[i].lastName}</td>
+      <td>${employees[i].idNumber}</td>
+      <td>${employees[i].jobTitle}</td>
+      <td>$ ${accounting.formatNumber(employees[i].annualSalary)}</td>
       <td><button type="button" id="delete" class="btn btn-dark">Delete</button></td>
     </tr>
     `);
@@ -80,7 +80,14 @@ function calculateMonthlyLabor() {
 }
 
 function deleteEmployee() {
-  let clickedThing = $("#delete").text();
-  console.log("you clicked on", clickedThing);
-  $('#delete').closest("tr").remove();
+  let clickedThing = $(this).text();
+  let indexNumber = $(this).parent().attr("id");
+
+  if (clickedThing === "Delete") {
+    console.log('Deleting:', employees[indexNumber]);
+    $("#delete").closest("tr").remove();
+    employees.splice(indexNumber, 1);
+  }
+
+  renderToDom();
 }
