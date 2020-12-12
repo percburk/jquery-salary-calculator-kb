@@ -21,9 +21,20 @@
       <input type="number" id="annualSalary" placeholder="Annual Salary" />
       <button type="button" id="submit" class="btn btn-dark">Submit</button>
     </header>
-    <main id="tableMain">
+    <main>
       <p>Employees:</p>
-      <table id="employeeEntry" class="table table-bordered">
+      <table id="tableMain" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID Number</th>
+            <th>Job Title</th>
+            <th>Annual Salary</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="employeeEntry" ></tbody>
       </table>
       <p id="monthlyLabor"></p>
     </main>

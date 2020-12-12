@@ -42,16 +42,7 @@ function addToEmployees() {
 
 function renderToDom() {
   $("#employeeEntry").empty();
-  $("#employeeEntry").append(`
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">ID Number</th>
-      <th scope="col">Job Title</th>
-      <th scope="col">Annual Salary</th>
-      <th></th>
-    </tr>
-  `);
+
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
     <tr id="employee${i}">
@@ -65,6 +56,7 @@ function renderToDom() {
     `);
     $(`#employee${i}`).data("index", i);
   }
+
   calculateMonthlyLabor();
 }
 
