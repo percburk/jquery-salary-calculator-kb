@@ -73,18 +73,16 @@ function calculateMonthlyLabor() {
     monthlyLaborTotal += person.annualSalary;
   }
 
-  monthlyLaborTotal = monthlyLaborTotal / 12;
+  monthlyLaborTotal = Math.round(monthlyLaborTotal / 12);
 
-  $("#monthlyLabor").text(
-    `Monthly Labor Total: $ ${accounting.formatNumber(Math.round(
-      monthlyLaborTotal
-    ))}`
-  );
+  $("#monthlyLabor").text(`
+    Monthly Labor Total: $ ${accounting.formatNumber(monthlyLaborTotal)}`);
 }
 
- function deleteEmployee() {
-   let clickedThing = $('#delete').text();
-   console.log("you clicked on", clickedThing);
-   $('#delete').closest("tr").remove();
-
- }
+function deleteEmployee() {
+  let clickedThing = $("#delete").text();
+  console.log("you clicked on", clickedThing);
+  let findData =
+    //  $('#delete').closest("tr").remove();
+    console.log("find data", findData);
+}
