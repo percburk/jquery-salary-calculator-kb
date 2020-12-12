@@ -54,7 +54,7 @@ function renderToDom() {
   `);
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr id="${i}">
+    <tr data-index="${i}">
       <td>${employees[i].firstName}</td>
       <td>${employees[i].lastName}</td>
       <td>${employees[i].idNumber}</td>
@@ -81,7 +81,7 @@ function calculateMonthlyLabor() {
 
 function deleteEmployee() {
   let clickedThing = $(this).text();
-  let indexNumber = $(this).parent().attr("id");
+  let indexNumber = $(this).parent().attr("data-index");
 
   if (clickedThing === "Delete") {
     console.log('Deleting:', employees[indexNumber]);
