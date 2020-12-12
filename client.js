@@ -82,7 +82,5 @@ function calculateMonthlyLabor() {
 function deleteEmployee() {
   let clickedThing = $("#delete").text();
   console.log("you clicked on", clickedThing);
-  let findData =
-    //  $('#delete').closest("tr").remove();
-    console.log("find data", findData);
+  $('#delete').closest("tr").remove();
 }
