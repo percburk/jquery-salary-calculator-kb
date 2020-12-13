@@ -113,9 +113,9 @@
   background-color: #8a2929;
   border: 1px solid black;
   color: white;
-  font-size: 20px;
+  font-size: 24px !important;
   padding: 10px;
-  transition: 0.4s linear;
+  transition: background 0.4s linear, font-size 0.4s linear;
 }
 
 .p-input {
@@ -140,7 +140,7 @@
   margin: 20px 0px;
   padding: 10px;
   text-align: right;
-  transition: 0.4s linear;
+  transition: background 0.4s linear, font-size 0.4s linear;
 }
 
 .salary-div {
@@ -153,6 +153,7 @@
 .tab {
   margin-right: 20px;
 }
+
 .table-button-cell {
   width: 100px;
 }
