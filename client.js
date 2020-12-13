@@ -52,7 +52,7 @@ function renderToDom() {
   // loop through employee array to display info, assign ID's to <tr> and <button>
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr id="employee${i}" class="td">
+    <tr id="indexData" class="td">
       <td>${employees[i].firstName}</td>
       <td>${employees[i].lastName}</td>
       <td>${employees[i].idNumber}</td>
@@ -62,7 +62,7 @@ function renderToDom() {
     </tr>
     `);
     // assign .data() index number to each <tr> for deleteEmployee()
-    $(`#employee${i}`).data("index", i);
+    $("#indexData").data("index", i);
   }
 
   calculateMonthlyLabor();
