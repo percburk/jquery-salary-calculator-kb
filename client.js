@@ -52,13 +52,13 @@ function renderToDom() {
   // loop through employee array to display info, assign ID's to <tr> and <button>
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr id="employee${i}">
+    <tr id="employee${i}" class="td">
       <td>${employees[i].firstName}</td>
       <td>${employees[i].lastName}</td>
       <td>${employees[i].idNumber}</td>
       <td>${employees[i].jobTitle}</td>
       <td>$ ${accounting.formatNumber(employees[i].annualSalary)}</td>
-      <td><button type="button" id="delete" class="btn btn-dark">Delete</button></td>
+      <td><button type="button" id="delete" class="delete-button">Delete</button></td>
     </tr>
     `);
     // assign .data() index number to each <tr> for deleteEmployee()
@@ -69,17 +69,20 @@ function renderToDom() {
 } //end renderToDom
 
 function calculateMonthlyLabor() {
-  $('#monthlyLabor').empty();
+  $("#monthlyLabor").empty();
   let monthlyLaborTotal = 0;
   for (person of employees) {
     monthlyLaborTotal += person.annualSalary;
   }
   monthlyLaborTotal = Math.round(monthlyLaborTotal / 12);
+  $("#monthlyLabor").append(` $ ${accounting.formatNumber(monthlyLaborTotal)}`);
 
-// ADD CONDITIONAL to display red if monthlyLaborTotal > $20k!!
-
-  $("#monthlyLabor").append(`
-    Monthly Labor Total: $ ${accounting.formatNumber(monthlyLaborTotal)}`);
+  // conditional to display red if over budget
+  if (monthlyLaborTotal > 20000) {
+    $("#budgetColor").addClass("over-budget");
+  } else {
+    $("#budgetColor").removeClass("over-budget");
+  }
 } // end calculateMonthlyLabor
 
 function deleteEmployee() {

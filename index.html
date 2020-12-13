@@ -6,37 +6,60 @@
     <script src="jquery.v3.5.1.js"></script>
     <script src="accounting.js"></script>
     <script src="client.js"></script>
-    <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Week 7 Salary Calculator</title>
   </head>
-  <body class="container">
-    <header>
-      <h1>Salary Calculator</h1>
-      <p>Add Employee:</p>
-      <input type="text" id="firstName" placeholder="First Name" />
-      <input type="text" id="lastName" placeholder="Last Name" />
-      <input type="number" id="idNumber" placeholder="ID Number" />
-      <input type="text" id="jobTitle" placeholder="Job Title" />
-      <input type="number" id="annualSalary" placeholder="Annual Salary" />
-      <button type="button" id="submit" class="btn btn-dark">Submit</button>
-    </header>
+  <body>
+    <h1 class="h1">Salary Calculator</h1>
+    <div class="input-bar">
+      <p class="p-input">Add Employee:</p>
+      <input
+        type="text"
+        id="firstName"
+        class="input"
+        placeholder="First Name"
+      />
+      <input type="text" id="lastName" class="input" placeholder="Last Name" />
+      <input
+        type="number"
+        id="idNumber"
+        class="input-number"
+        placeholder="ID Number"
+      />
+      <input type="text" id="jobTitle" class="input" placeholder="Job Title" />
+      <div class="salary-div">
+      <span class="dollar-sign">$ </span>
+      <input
+        type="number"
+        id="annualSalary"
+        class="input-salary"
+        placeholder="Annual Salary"
+      />
+      </div>
+      <button type="button" id="submit" class="btn btn-dark input-button">
+        Submit
+      </button>
+    </div>
     <main>
-      <p>Employees:</p>
-      <table id="tableMain" class="table table-bordered">
+      <table id="tableMain">
         <thead>
-          <tr>
+          <tr class="th">
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID Number</th>
             <th>Job Title</th>
             <th>Annual Salary</th>
-            <th></th>
+            <th class="table-button-cell"></th>
           </tr>
         </thead>
-        <tbody id="employeeEntry" ></tbody>
+        <tbody id="employeeEntry"></tbody>
       </table>
-      <p id="monthlyLabor"></p>
+      <div class="div-labor">
+        <p class="p-labor" id="budgetColor">
+          Monthly Labor Total:<span class="tab"></span
+          ><span id="monthlyLabor"></span>
+        </p>
+      </div>
     </main>
   </body>
 </html>
