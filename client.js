@@ -52,7 +52,7 @@ function renderToDom() {
   // loop through employee array to display info, assign ID's to <tr> and <button>
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr id="indexData" class="td">
+    <tr id='${i}' class="td">
       <td>${employees[i].firstName}</td>
       <td>${employees[i].lastName}</td>
       <td>${employees[i].idNumber}</td>
@@ -62,7 +62,8 @@ function renderToDom() {
     </tr>
     `);
     // assign .data() index number to each <tr> for deleteEmployee()
-    $("#indexData").data("index", i);
+    $(`#${i}`).data("index", i);
+
   }
 
   calculateMonthlyLabor();
@@ -88,7 +89,7 @@ function calculateMonthlyLabor() {
 function deleteEmployee() {
   // find .data() index number of parent <tr> of clicked delete button
   let indexNumber = $(this).parent().parent().data("index");
-  console.log("Deleting:", employees[indexNumber]);
+  console.log('Deleting:', employees[indexNumber]);
 
   // delete employee object from array
   employees.splice(indexNumber, 1);
