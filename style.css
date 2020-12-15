@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,600;1,200;1,600&display=swap");
 
-.delete-button {
+.delete-btn {
   background-color: #addaff70;
   border: 1px solid black;
   box-sizing: border-box;
@@ -158,7 +158,7 @@
   width: 100px;
 }
 
-.td {
+.employee-row {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   font-family: "Nunito Sans", sans-serif;

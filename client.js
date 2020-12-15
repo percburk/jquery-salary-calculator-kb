@@ -7,7 +7,7 @@ let employees = [];
 function readyNow() {
   console.log("JQ");
   $("#submit").on("click", addToEmployees);
-  $("#tableMain").on("click", "#delete", deleteEmployee);
+  $("#tableMain").on("click", ".delete", deleteEmployee);
 
   renderToDom();
 } // end readyNow
@@ -35,12 +35,8 @@ function addToEmployees() {
     employees.push(newEmployee);
     console.log("Added to employees:", newEmployee);
 
-    // clear input values
-    $("#firstName").val("");
-    $("#lastName").val("");
-    $("#idNumber").val("");
-    $("#jobTitle").val("");
-    $("#annualSalary").val("");
+    // clear input values in .input-bar
+    $(".input-bar input").val("");
   }
   renderToDom();
 } // end addToEmployees
@@ -52,18 +48,15 @@ function renderToDom() {
   // loop through employee array to display info, assign ID's to <tr> and <button>
   for (let i = 0; i < employees.length; i++) {
     $("#employeeEntry").append(`
-    <tr id='${i}' class="td">
+    <tr data-index="${i}" class="employee-row">
       <td>${employees[i].firstName}</td>
       <td>${employees[i].lastName}</td>
       <td>${employees[i].idNumber}</td>
       <td>${employees[i].jobTitle}</td>
       <td>$ ${accounting.formatNumber(employees[i].annualSalary)}</td>
-      <td><button type="button" id="delete" class="delete-button">Delete</button></td>
+      <td><button type="button" class="delete delete-btn">Delete</button></td>
     </tr>
     `);
-    // assign .data() index number to each <tr> for deleteEmployee()
-    $(`#${i}`).data("index", i);
-
   }
 
   calculateMonthlyLabor();
@@ -87,9 +80,9 @@ function calculateMonthlyLabor() {
 } // end calculateMonthlyLabor
 
 function deleteEmployee() {
-  // find .data() index number of parent <tr> of clicked delete button
-  let indexNumber = $(this).parent().parent().data("index");
-  console.log('Deleting:', employees[indexNumber]);
+  // find data-index of closest <tr> of clicked delete button
+  let indexNumber = $(this).closest("tr").data("index");
+  console.log("Deleting:", employees[indexNumber]);
 
   // delete employee object from array
   employees.splice(indexNumber, 1);
